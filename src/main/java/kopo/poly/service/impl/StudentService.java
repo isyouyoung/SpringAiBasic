@@ -62,12 +62,41 @@ public class StudentService implements IStudentService {
         }
 
 
-
         List<StudentDTO> rList = Optional.ofNullable(
                 studentMapper.getStudentList()
         ).orElseGet(ArrayList::new);
 
         log.info("{}.updateStudent End!", className);
+
+        return List.of();
+    }
+
+    @Override
+    public List<StudentDTO> deleteStudent(StudentDTO pDTO) throws Exception {
+
+        String className = this.getClass().getName();
+        log.info("{}.deleteStudent Start!", className);
+
+        Optional<StudentDTO> res = Optional.ofNullable(
+                studentMapper.getStudent(pDTO)
+        );
+
+        if (res.isPresent()) {
+
+            studentMapper.deleteStudent(pDTO);
+
+            log.info("{}님이 삭제되었습니다.", pDTO.getUserId());
+
+        } else {
+
+            log.warn("삭제 실패 - 존재하지 않는 회원입니다: {}", pDTO.getUserId());
+        }
+
+        List<StudentDTO> rList = Optional.ofNullable(
+                studentMapper.getStudentList()
+        ).orElseGet(ArrayList::new);
+
+        log.info("{}.deleteStudent End!", className);
 
         return List.of();
     }

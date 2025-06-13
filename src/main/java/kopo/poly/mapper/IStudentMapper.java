@@ -15,5 +15,9 @@ public interface IStudentMapper {
 
     StudentDTO getStudent(StudentDTO pDTO) throws Exception;
 
+//    void updateStudent(StudentDTO pDTO) throws Exception;
+    // 첫번째꺼 다시 하는중
     void updateStudent(StudentDTO pDTO) throws Exception;
+
+    void deleteStudent(StudentDTO pDTO) throws Exception;
 }
