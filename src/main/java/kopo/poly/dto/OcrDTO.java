@@ -18,4 +18,6 @@ public class OcrDTO {
     private String result;
     // 저장된 이미지로부터 읽은 글씨
 
+
+    // DTO는 모아서 한번에 전달
 }
